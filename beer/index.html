@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>青岛啤酒</title>
+    <link rel="stylesheet" href="plugin/bootstrap/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="http://apps.bdimg.com/libs/fontawesome/4.4.0/css/font-awesome.min.css">-->
+    <link rel="stylesheet" href="plugin/fontAwesome/css/font-awesome.css">
+    <script src="plugin/echart/echarts.common.min.js"></script>
+    <style>
+        body{
+            background-color: #212b34;
+            color: #fff;
+        }
+        header{
+
+            text-align: center;
+            font-size:12px;
+        }
+        #chart1,#date1{
+            border:1px solid #fff;
+            height: 300px;
+        }
+        #chart1{
+            border-right:0 solid #fff;
+        }
+        /*#date1{*/
+            /*margin-right:30px;*/
+        /*}*/
+        .label{
+            background-color: #2c373d;
+            text-align:left;
+        }
+        #date1 p{
+            margin-bottom:3px;
+            font-size:12px;
+        }
+        hr.dash{
+            margin:0;
+            border:1px dashed #727375;
+        }
+    </style>
+</head>
+<body class="row">
+    <!--header-->
+    <header class="col-xs-3">前一天</header>
+    <header class="col-xs-6" style="padding-right:10px;padding-left:10px;">济南大区销售运营日报<span class="month"></span>月 <span class="day"></span>日</header>
+    <header class="col-xs-3">后一天</header>
+    <!--body-->
+    <section class="row">
+        <h5 class="col-xs-12" style="margin-left:30px"><i class="fa fa-group"></i> 业代在线比</h5>
+        <div class="container" style="width: 80%;">
+            <div class="col-xs-6" id="chart1"></div>
+            <div class="col-xs-6" id="date1">
+                <h5 class="label col-xs-12">昨天</h5>
+                <p>上线人数：<span>118</span></p>
+                <hr class="dash">
+                <p>上线人数：<span>118</span></p>
+                <hr class="dash">
+                <p>上线人数：<span>118</span></p>
+                <hr class="dash">
+                <p>上线人数：<span>118</span></p>
+                <div style="margin-top: 40px;"></div>
+                <h5 class="label col-xs-12">昨天</h5>
+                <p>上线人数：<span>118</span></p>
+                <hr class="dash">
+                <p>上线人数：<span>118</span></p>
+                <hr class="dash">
+                <p>上线人数：<span>118</span></p>
+                <hr class="dash">
+                <p>上线人数：<span>118</span></p>
+            </div>
+        </div>
+        <!--chart1-->
+
+    </section>
+    <script>
+        var myChart1 = echarts.init(document.getElementById('chart1'));
+        var option1 = {
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    }
+                },
+                legend: {
+                    data:['上线人数','当天登入人数','人均拜访终端数'],
+                    textStyle: {
+                        color: "auto",
+                    },
+
+                    y:"bottom",
+//                    padding: "5px 0 15px",
+                    itemGap:5
+                },
+                grid: {
+                    left: '1%',
+                    right: '1%',
+                    bottom: '25%',
+                    containLabel: true
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        data : ['今天','昨天'],
+                        axisLabel: {
+                            show: true,
+                            textStyle: {
+                                color: '#fff'
+                            }
+                        }
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                        axisLabel: {
+                            show: true,
+                            textStyle: {
+                                color: '#fff'
+                            }
+                        }
+                    }
+                ],
+                series : [
+                    {
+                        name:'上线人数',
+                        type:'bar',
+                        data:[118, 118],
+                        barWidth:10,
+                        itemStyle:{
+                            normal:{
+                                color:"#6899cf"
+                            }
+                        }
+                    },
+                    {
+                        name:'当天登入人数',
+                        type:'bar',
+                        stack: '广告',
+                        data:[56, 56],
+                        barWidth:10,
+                        itemStyle:{
+                            normal:{
+                                color:"#dd8344"
+                            }
+                        }
+                    },
+
+                    {
+                        name:'人均拜访终端数',
+                        type:'bar',
+                        data:[24, 24],
+                        barWidth:10,
+                        itemStyle:{
+                            normal:{
+                                color:"#fff"
+                            }
+                        }
+                    }
+                ]
+        };
+        myChart1.setOption(option1);
+    </script>
+</body>
+</html>
