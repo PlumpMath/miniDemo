@@ -163,6 +163,9 @@
             background-color: #20b66e;
             border:1px solid #20b66e;
         }
+        .pieChart li{
+            list-style: none;
+        }
         .chart9{
             height: 300px;
         }
@@ -1078,7 +1081,7 @@
         </div>
         <div class="container" style="margin-top: 20px;">
             <!--chart9of1-->
-            <ul class="col-xs-12" style="padding: 0">
+            <ul class="col-xs-12 pieChart" style="padding: 0">
                 <li class="col-xs-12" style="padding: 0">
                     <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of1"></div>
                     <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of2"></div>
@@ -1760,6 +1763,83 @@
                         {
                             value:40,
                             name:'低于12元',
+                            icon:'pie',
+                            textStyle: {
+                                color: "#c1b8bb",
+                            },
+//                            itemStyle: {
+//                                normal: {
+//                                    labelLine:{show:false,length:1},label:{show:false}
+//                                }
+//                        }
+                        },
+                        {value:10,
+                            name:'12元-15元',
+                            icon:'stack',
+                            textStyle: {
+                                color: "#c1b8bb",
+                                icon:'image://images/1.png'
+                            }
+//                            itemStyle:
+//                            {normal:{labelLine:{show:false},label:{show:false}}}
+                        },
+                        {value:35,
+                            name:'高于12元',
+                            icon:'image://images/1.png',
+                            textStyle: {
+                                color: "#c1b8bb",
+                            }
+//                            itemStyle:
+//                            {normal:
+//                                {labelLine:{show:false},                                        label:{show:false}
+//                                }
+//                            }
+                        }
+                    ],
+                    itemStyle:{
+                    normal:{
+                        label:{
+                            show: true,
+                            formatter: '{c}%',
+                            position:'inside'
+                        },
+                        labelLine :{show:false,}
+                    }
+                }
+                }
+            ]
+        };
+        var option9of2 = {
+            title : {
+                text: 'S+KA+SP渠道',
+                x:'center',
+                textStyle: {
+                    color: "#c1b8bb",
+                }
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c}%"
+            },
+            color:['#f08437','#ea5550','#f6ab00'],
+            legend: {
+                orient: 'vertical',
+                bottom: 'left',
+                data: ['低于8元','8元-10元','高于10元'],
+                textStyle: {
+                    color: "#c1b8bb",
+                },
+            },
+            series : [
+                {
+                    name: 'S+KA+SP渠道',
+                    type: 'pie',
+                    radius : '80%',
+                    center: ['50%', '50%'],
+                    data:[
+                        {
+                            value:40,
+                            name:'低于8元',
                             x: 10,
                             y: 10,
                             textStyle: {
@@ -1772,7 +1852,7 @@
 //                        }
                         },
                         {value:10,
-                            name:'12元-15元',
+                            name:'8元-10元',
                             textStyle: {
                                 color: "#c1b8bb",
                             }
@@ -1780,7 +1860,7 @@
 //                            {normal:{labelLine:{show:false},label:{show:false}}}
                         },
                         {value:35,
-                            name:'高于12元',
+                            name:'高于10元',
                             textStyle: {
                                 color: "#c1b8bb",
                             }
@@ -1813,6 +1893,7 @@
         echart('chart7',option7);
         echart('chart8',option8);
         echart('chart9of1',option9of1);
+        echart('chart9of2',option9of2);
     </script>
 </body>
 </html>
