@@ -14,14 +14,14 @@
             background-color: #212b34;
             color: #fff;
             font-family: "黑体";
-            height: 3000px;
+            height:10000px;
         }
         header{
 
             text-align: center;
             font-size:12px;
         }
-        #chart1,#date1,#chart2,#date2,#chart4{
+        #chart1,#date1,#chart2,#date2,#chart4,#chart5,#date5,#chart8{
             height: 300px;
         }
         #chart3,#date3{
@@ -30,7 +30,10 @@
         #date4{
             height: 150px;
         }
-        #chart1,#chart2,#chart3{
+        #chart6,#date6,#chart7,#date7{
+            height: 350px;
+        }
+        #chart1,#chart2,#chart3,#chart5,#chart6,#chart7{
             border-right:1px solid #433f3e;
             padding: 0;
         }
@@ -41,7 +44,7 @@
             background-color: #2c373d;
             text-align:left;
         }
-        #date1 p{
+        #date1 p,#date2 p,#date5 p,#date6 p{
             margin-bottom:3px;
             font-size:12px;
         }
@@ -93,14 +96,15 @@
         #date2 li.title{
             color: #1fb56d;
         }
-        #date3 li{
+        #date3 li,#date7 li{
             list-style: none;
             float: left;
             text-align: left;
             color:#1fb56d;
         }
-        #date3 li.title{
+        #date3 li.title,#date7 li.title{
             color:#c1b8bb;
+            margin-bottom:5px;
         }
         #date4 li{
            font-size:12px;
@@ -114,6 +118,18 @@
         }
         #date4 li.days{
             list-style: disc;
+        }
+        #date7 li{
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            font-size: 12px;
+        }
+        .activity li{
+            float: left;
+            padding: 0;
+            list-style: none;
+            font-size:12px;
         }
     </style>
 </head>
@@ -579,11 +595,358 @@
             </table>
         </div>
     </section>
+    <!--section five-->
+    <section class="row">
+        <h4 class="col-xs-12" style="margin-left:30px;margin-top: 25px;">
+            <img src="images/1.png" alt="竞品终端铺货率" width=38 height=40>
+            竞品终端铺货率
+        </h4>
+        <div class="container" style="margin-top: 90px;padding:0">
+            <!--chart5-->
+            <div class="col-xs-7" id="chart5"></div>
+            <div class="col-xs-5" id="date5" style="padding:0 5px">
+                <h5 class="label col-xs-12">昨天</h5>
+                <p>终端总数：<span>31,047</span></p>
+                <hr class="dash">
+                <p>竞品终端总数：<span>6,035</span></p>
+                <hr class="dash">
+                <p>竞品铺货率：<span>19.5%</span></p>
+                <div style="margin-top: 40px;"></div>
+                <h5 class="label col-xs-12">前天</h5>
+                <p>终端总数：<span>31,047</span></p>
+                <hr class="dash">
+                <p>竞品终端总数：<span>6,035</span></p>
+                <hr class="dash">
+                <p>竞品铺货率：<span>19.5%</span></p>
+            </div>
+        </div>
+        <!--table-->
+        <div class="table-responsive">
+            <table border="1" cellpadding="1" cellspacing="1" bordercolor="#433f3e">
+                <thead>
+                <tr>
+                    <td style="width: 25%;">二级区域</td>
+                    <td style="width: 25%;">终端总数</td>
+                    <td style="width: 25%;">竞品终端总数</td>
+                    <td style="width: 25%;">竞品铺货率</td>
+                </tr>
+                <tr>
+                    <td style="width: 25%;">曹县</td>
+                    <td style="width: 25%;">200</td>
+                    <td style="width: 25%;">210</td>
+                    <td style="width: 25%;">83.1%</td>
+                </tr>
+                <tr>
+                    <td style="width: 25%;">成武县</td>
+                    <td style="width: 25%;">300</td>
+                    <td style="width: 25%;">320</td>
+                    <td style="width: 25%;">83.1%</td>
+                </tr>
+                <tr>
+                    <td style="width: 25%;">单县</td>
+                    <td style="width: 25%;">520</td>
+                    <td style="width: 25%;">530</td>
+                    <td style="width: 25%;">83.1%</td>
+                </tr>
+                <tr>
+                    <td style="width: 25%;">定陶县</td>
+                    <td style="width: 25%;">630</td>
+                    <td style="width: 25%;">650</td>
+                    <td style="width: 25%;">83.1%</td>
+                </tr>
+                <tr>
+                    <td style="width: 25%;">东明县</td>
+                    <td style="width: 25%;">770</td>
+                    <td style="width: 25%;">780</td>
+                    <td style="width: 25%;">83.1%</td>
+                </tr>
+                <tr>
+                    <td style="width: 25%;">巨野县</td>
+                    <td style="width: 25%;">882</td>
+                    <td style="width: 25%;">886</td>
+                    <td style="width: 25%;">83.1%</td>
+                </tr>
+                <tr>
+                    <td style="width: 25%;">牡丹县</td>
+                    <td style="width: 25%;">520</td>
+                    <td style="width: 25%;">530</td>
+                    <td style="width: 25%;">83.1%</td>
+                </tr>
+                <tr>
+                    <td style="width: 25%;">庄寨</td>
+                    <td style="width: 25%;">320</td>
+                    <td style="width: 25%;">330</td>
+                    <td style="width: 25%;">83.1%</td>
+                </tr>
+                <tr>
+                    <td class="sum" style="width: 25%;">大区合计</td>
+                    <td class="sum" style="width: 25%;">4770</td>
+                    <td class="sum" style="width: 25%;">4864</td>
+                    <td class="sum" style="width: 25%;">83.1%</td>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </section>
+    <!--section six-->
+    <section class="row">
+        <h4 class="col-xs-12" style="margin-left:30px;margin-top: 25px;">
+            <img src="images/1.png" alt="协议店执行到位率" width=38 height=40>
+            协议店执行到位率
+        </h4>
+        <div class="container" style="margin-top: 90px;padding:0">
+            <!--chart6-->
+            <div class="col-xs-7" id="chart6"></div>
+            <div class="col-xs-5" id="date6" style="padding:0 5px">
+                <h5 class="label col-xs-12">昨天</h5>
+                <p>终端总数：<span>31,047</span></p>
+                <hr class="dash">
+                <p>协议店终端总数：<span>6,035</span></p>
+                <hr class="dash">
+                <p>执行到位终端数：<span>19.5%</span></p>
+                <hr class="dash">
+                <p>执行到位率：<span>19.5%</span></p>
+                <div style="margin-top: 40px;"></div>
+                <h5 class="label col-xs-12">前天</h5>
+                <p>终端总数：<span>31,047</span></p>
+                <hr class="dash">
+                <p>协议店终端总数：<span>6,035</span></p>
+                <hr class="dash">
+                <p>执行到位终端数：<span>19.5%</span></p>
+                <hr class="dash">
+                <p>执行到位率：<span>19.5%</span></p>
+            </div>
+        </div>
+        <!--table-->
+        <div class="table-responsive">
+            <table border="1" cellpadding="1" cellspacing="1" bordercolor="#433f3e">
+                <thead>
+                <tr>
+                    <td style="width: 25%;">二级区域</td>
+                    <td style="width: 25%;">终端总数</td>
+                    <td style="width: 25%;">竞品终端总数</td>
+                    <td style="width: 25%;">竞品铺货率</td>
+                </tr>
+                <tr>
+                    <td style="width: 25%;">曹县</td>
+                    <td style="width: 25%;">200</td>
+                    <td style="width: 25%;">210</td>
+                    <td style="width: 25%;">83.1%</td>
+                </tr>
+                <tr>
+                    <td style="width: 25%;">成武县</td>
+                    <td style="width: 25%;">300</td>
+                    <td style="width: 25%;">320</td>
+                    <td style="width: 25%;">83.1%</td>
+                </tr>
+                <tr>
+                    <td style="width: 25%;">单县</td>
+                    <td style="width: 25%;">520</td>
+                    <td style="width: 25%;">530</td>
+                    <td style="width: 25%;">83.1%</td>
+                </tr>
+                <tr>
+                    <td style="width: 25%;">定陶县</td>
+                    <td style="width: 25%;">630</td>
+                    <td style="width: 25%;">650</td>
+                    <td style="width: 25%;">83.1%</td>
+                </tr>
+                <tr>
+                    <td style="width: 25%;">东明县</td>
+                    <td style="width: 25%;">770</td>
+                    <td style="width: 25%;">780</td>
+                    <td style="width: 25%;">83.1%</td>
+                </tr>
+                <tr>
+                    <td style="width: 25%;">巨野县</td>
+                    <td style="width: 25%;">882</td>
+                    <td style="width: 25%;">886</td>
+                    <td style="width: 25%;">83.1%</td>
+                </tr>
+                <tr>
+                    <td style="width: 25%;">牡丹县</td>
+                    <td style="width: 25%;">520</td>
+                    <td style="width: 25%;">530</td>
+                    <td style="width: 25%;">83.1%</td>
+                </tr>
+                <tr>
+                    <td style="width: 25%;">庄寨</td>
+                    <td style="width: 25%;">320</td>
+                    <td style="width: 25%;">330</td>
+                    <td style="width: 25%;">83.1%</td>
+                </tr>
+                <tr>
+                    <td class="sum" style="width: 25%;">大区合计</td>
+                    <td class="sum" style="width: 25%;">4770</td>
+                    <td class="sum" style="width: 25%;">4864</td>
+                    <td class="sum" style="width: 25%;">83.1%</td>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </section>
+    <!--section seven-->
+    <section class="row">
+        <h4 class="col-xs-12" style="margin-left:30px;margin-top: 25px;">
+            <img src="images/1.png" alt="关键产品铺货率" width=38 height=40>
+            关键产品铺货率
+        </h4>
+        <div class="container" style="margin-top: 90px;padding:0">
+            <!--chart7-->
+            <div class="col-xs-8" id="chart7"></div>
+            <div class="col-xs-4" id="date7" style="padding:0">
+                <h5 class="label col-xs-12">本月铺货率</h5>
+                <ul class="col-xs-12" style="padding: 0;">
+                    <li class="title col-xs-7">产品</li>
+                    <li class="title col-xs-5">铺货率</li>
+                    <li class="col-xs-7">经典600箱</li>
+                    <li class="col-xs-5">15.1%</li>
+                    <li class="col-xs-7">纯生500罐</li>
+                    <li class="col-xs-5">28.4%</li>
+                    <li class="col-xs-7">白啤500箱</li>
+                    <li class="col-xs-5">6.7%</li>
+                    <li class="col-xs-7">1903500箱</li>
+                    <li class="col-xs-5">2.7%</li>
+                    <li class="col-xs-7">纯生500箱</li>
+                    <li class="col-xs-5">33.9%</li>
+                </ul>
+                <h5 class="label col-xs-12" style="margin-top: 40px;">上月铺货率</h5>
+                <ul class="col-xs-12" style="padding: 0;">
+                    <li class="title col-xs-7">产品</li>
+                    <li class="title col-xs-5">铺货率</li>
+                    <li class="col-xs-7">经典600箱</li>
+                    <li class="col-xs-5">15.1%</li>
+                    <li class="col-xs-7">纯生500罐</li>
+                    <li class="col-xs-5">28.4%</li>
+                    <li class="col-xs-7">白啤500箱</li>
+                    <li class="col-xs-5">6.7%</li>
+                    <li class="col-xs-7">1903500箱</li>
+                    <li class="col-xs-5">2.7%</li>
+                    <li class="col-xs-7">纯生500箱</li>
+                    <li class="col-xs-5">33.9%</li>
+                </ul>
+            </div>
+        </div>
+        <!--table-->
+        <div class="table-responsive">
+            <table border="1" cellpadding="1" cellspacing="1" bordercolor="#433f3e">
+                <thead>
+                <tr>
+                    <td class="" style="width: 10%;">产品</td>
+                    <td style="width: 18%;">经典600箱</td>
+                    <td style="width: 18%;">纯生500罐</td>
+                    <td style="width: 18%;">白啤500箱</td>
+                    <td style="width: 18%;">(1903)500箱</td>
+                    <td style="width: 18%;">纯生500箱</td>
+                </tr>
+                <tr>
+                    <td class="" style="width: 10%;">二级区域</td>
+                    <td class="" colspan="5" style="width: 90%;">铺货终端数/本月铺货率</td>
+                </tr>
+                <tr>
+                    <td class="" style="width: 10%;">曹县</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                </tr>
+                <tr>
+                    <td class="" style="width: 10%;">成武县</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                </tr>
+                <tr>
+                    <td class="" style="width: 10%;">单县</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                </tr>
+                <tr>
+                    <td class="" style="width: 10%;">定陶县</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                </tr>
+                <tr>
+                    <td class="" style="width: 10%;">定陶县</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                </tr>
+                <tr>
+                    <td class="" style="width: 10%;">东明县</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                </tr>
+                <tr class="sum">
+                    <td style="width: 10%;">大区合计</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                    <td style="width: 18%;">8/10%</td>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </section>
+    <!--section eight-->
+    <section class="row" style="margin-top: 30px;">
+        <h4 class="col-xs-12" style="margin-left:30px;">
+            <img src="images/2.png" alt="促销活动/重点事项统计" width=38 height=35 >
+            促销活动/重点事项统计
+        </h4>
+        <div class="container">
+            <!--chart4-->
+            <div class="col-xs-12" id="chart8"></div>
+        </div>
+        <!--table8-->
+        <div class="row">
+            <div class="activity container">
+                <div class="col-xs-4" style="padding: 0">
+                    <ul class="col-xs-12"  style="padding: 0">
+                        <li class="activityPre col-xs-6">二级区域</li>
+                        <li class="activityPre col-xs-6">终端总数</li>
+                        <li class="col-xs-6">曹县</li>
+                        <li class="col-xs-6">255</li>
+                    </ul>
+                </div>
+                <div class="col-xs-8" style="overflow-x: scroll">
+                    <div style="height: 200px; background-color:pink;">
+                        <p style="color:#f00;font-size: 12px;margin: 0">&lt;温馨提示:向左滑动可查看其它活动&gt;</p>
+                        <table style="width: 150%;">
+                            <tr>
+                                <td style="width: 25%;">促销活动七个字1</td>
+                                <td style="width: 25%;">促销活动七个字1</td>
+                                <td style="width: 25%;">促销活动七个字1</td>
+                                <td style="width: 25%;">促销活动七个字1</td>
+                                <td style="width: 25%;">促销活动七个字1</td>
+                                <td style="width: 25%;">促销活动七个字1</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <script>
-        var myChart1 = echarts.init(document.getElementById('chart1'));
-        var myChart2 = echarts.init(document.getElementById('chart2'));
-        var myChart3 = echarts.init(document.getElementById('chart3'));
-        var myChart4 = echarts.init(document.getElementById('chart4'));
+        function echart(chartId,chartOption){
+            var chartName = echarts.init(document.getElementById(chartId));
+            chartName.setOption(chartOption);
+        }
         var option1 = {
                 tooltip : {
                     trigger: 'axis',
@@ -744,6 +1107,9 @@
             ]
         };
         var option3 = {
+            tooltip: {
+                trigger: 'axis'
+            },
             grid: {
                 left: '0%',
                 right: '10%',
@@ -895,10 +1261,338 @@
                 }
             ]
         };
-        myChart1.setOption(option1);
-        myChart2.setOption(option2);
-        myChart3.setOption(option3);
-        myChart4.setOption(option4);
+        var option5 = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            grid: {
+                left: '1%',
+                right: '1%',
+                bottom: '25%',
+                top:'12%',
+                containLabel: true
+            },
+            legend: {
+                data:['终端总数','竞品终端总数','竞品铺货率'],
+                textStyle: {
+                    color: "#c1b8bb",
+                },
+
+                y:"bottom",
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    data: ['昨天','前天'],
+                    axisLabel: {
+                        show: true,
+                        textStyle: {
+                            color: '#c1b8bb'
+                        }
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    min: 0,
+                    interval: 10000,
+                    axisLabel: {
+                        formatter: '{value}',
+                        textStyle: {
+                            color: '#c1b8bb'
+                        }
+                    }
+                },
+                {
+                    type: 'value',
+                    min: 19.83,
+                    max: 19.88,
+                    axisLabel: {
+                        formatter: '{value}%',
+                        textStyle: {
+                            color: '#c1b8bb'
+                        }
+                    }
+                }
+            ],
+            series: [
+                {
+                    name:'终端总数',
+                    type:'bar',
+                    data:[31000, 35000],
+                    barWidth:10,
+                    itemStyle:{
+                        normal:{
+                            color:"#1fb56d"
+                        }
+                    },
+                },
+                {
+                    name:'竞品终端总数',
+                    type:'bar',
+                    data:[8000, 9000],
+                    barWidth:10,
+                    itemStyle:{
+                        normal:{
+                            color:"#009EE7"
+                        }
+                    },
+                },
+                {
+                    name:'竞品铺货率',
+                    type:'line',
+                    yAxisIndex: 1,
+                    data:[19.84, 19.87],
+                    min:19.83,
+                    itemStyle:{
+                        normal:{
+                            color:"#f6ac00"
+                        }
+                    },
+
+                }
+            ]
+        };
+        var option6 = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            grid: {
+                left: '1%',
+                right: '1%',
+                bottom: '30%',
+                top:'12%',
+                containLabel: true
+            },
+            legend: {
+                data:['终端总数','协议店终端总数','执行到位终端总数','执行到位率'],
+                textStyle: {
+                    color: "#c1b8bb",
+                },
+                y:"bottom",
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    data: ['昨天','前天'],
+                    axisLabel: {
+                        show: true,
+                        textStyle: {
+                            color: '#c1b8bb'
+                        }
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    min: 0,
+                    interval: 10000,
+                    axisLabel: {
+                        formatter: '{value}',
+                        textStyle: {
+                            color: '#c1b8bb'
+                        }
+                    }
+                },
+                {
+                    type: 'value',
+                    min: 19.83,
+                    max: 19.88,
+                    axisLabel: {
+                        formatter: '{value}%',
+                        textStyle: {
+                            color: '#c1b8bb'
+                        }
+                    }
+                }
+            ],
+            series: [
+                {
+                    name:'终端总数',
+                    type:'bar',
+                    data:[31000, 35000],
+                    barWidth:7,
+                    itemStyle:{
+                        normal:{
+                            color:"#1fb56d"
+                        }
+                    },
+                },
+                {
+                    name:'协议店终端总数',
+                    type:'bar',
+                    data:[8000, 9000],
+                    barWidth:7,
+                    itemStyle:{
+                        normal:{
+                            color:"#009EE7"
+                        }
+                    },
+                },
+                {
+                    name:'执行到位终端总数',
+                    type:'bar',
+                    data:[8000, 9000],
+                    barWidth:7,
+                    itemStyle:{
+                        normal:{
+                            color:"#7f308c"
+                        }
+                    },
+                },
+                {
+                    name:'执行到位率',
+                    type:'line',
+                    yAxisIndex: 1,
+                    data:[19.84, 19.87],
+                    min:19.83,
+                    itemStyle:{
+                        normal:{
+                            color:"#f6ac00"
+                        }
+                    },
+
+                }
+            ]
+        };
+        var option7 = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            grid: {
+                left: '1%',
+                right: '5%',
+                bottom: '15%',
+                top:'12%',
+                containLabel: true
+            },
+            legend: {
+                data:['本月铺货终端数','上月铺货终端数'],
+                textStyle: {
+                    color: "#c1b8bb",
+                },
+                y:"bottom",
+            },
+            xAxis: {
+                type: 'value',
+                boundaryGap: [0, 0.01],
+                interval:1,
+//                name: '单位/千',
+                axisLabel: {
+                    formatter: '{value}千',
+                    show: true,
+                    textStyle: {
+                        color: '#c1b8bb'
+                    }
+                }
+            },
+            yAxis: {
+                type: 'category',
+                rotate: 60,
+
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        color: '#c1b8bb'
+                    }
+                },
+                data: ['纯生500箱','(1903)500箱','白啤500箱','纯生500罐','经典600箱']
+
+            },
+            series: [
+                {
+                    name: '本月铺货终端数',
+                    type: 'bar',
+                    barWidth:16,
+                    itemStyle:{
+                        normal:{
+                            color:"#1fb56d"
+                        }
+                    },
+                    data: [4.5,4.5,4.5,4.5,4.5]
+                },{
+                    name: '上月铺货终端数',
+                    type: 'bar',
+                    barWidth:16,
+                    itemStyle:{
+                        normal:{
+                            color:"#019fe8"
+                        }
+                    },
+                    data: [2.5,2.5,2.5,2.5,2.5]
+                }
+            ]
+        };
+        var option8 = {
+            tooltip : {
+                trigger: 'axis',
+                axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                    type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            legend: {
+                data:['终端数'],
+                textStyle: {
+                    color: "#c1b8bb",
+                },
+
+                y:"bottom",
+                itemGap:5
+            },
+            grid: {
+                left: '1%',
+                right: '1%',
+                bottom: '10%',
+                top:'10%',
+                containLabel: true
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    data : ['活动1','活动2','活动3','活动4','活动5'],
+                    axisLabel: {
+                        show: true,
+                        textStyle: {
+                            color: '#c1b8bb'
+                        }
+                    }
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    axisLabel: {
+                        show: true,
+                        textStyle: {
+                            color: '#c1b8bb'
+                        }
+                    }
+                }
+            ],
+            series : [
+                {
+                    name:'终端数',
+                    type:'bar',
+                    barWidth :12,
+                    data:[4500, 2800, 50,100,3100],
+                    itemStyle:{
+                        normal:{
+                            color:"#20b66e"
+                        }
+                    }
+                }
+            ]
+        };
+        echart('chart1',option1);
+        echart('chart2',option2);
+        echart('chart3',option3);
+        echart('chart4',option4);
+        echart('chart5',option5);
+        echart('chart6',option6);
+        echart('chart7',option7);
+        echart('chart8',option8);
     </script>
 </body>
 </html>
