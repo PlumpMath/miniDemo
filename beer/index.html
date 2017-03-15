@@ -2,51 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!--<meta name="viewport" content="width=device-width,initial-scale=1">-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>青岛啤酒</title>
     <link rel="stylesheet" href="plugin/bootstrap/css/bootstrap.min.css">
-    <!--<link rel="stylesheet" href="http://apps.bdimg.com/libs/fontawesome/4.4.0/css/font-awesome.min.css">-->
-    <link rel="stylesheet" href="plugin/fontAwesome/css/font-awesome.css">
     <script src="plugin/echart/echarts.common.min.js"></script>
+    <script src="plugin/jquery/jquery-1.10.2.js"></script>
     <style>
+        html,body{
+            width: 100%;
+            overflow-x: hidden;
+        }
         body{
             background-color: #212b34;
             color: #fff;
             font-family: "黑体";
-            height:10000px;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
         }
         header{
-
             text-align: center;
             font-size:12px;
+            margin-top:20px;
         }
-        #chart1,#date1,#chart2,#date2,#chart4,#chart5,#date5,#chart8{
-            height: 300px;
+        /*header.col-xs-2{*/
+            /*border:1px solid #727375;*/
+            /*border-radius:12px;*/
+            /*height: 30px;*/
+            /*text-align: center;*/
+            /*padding:0;*/
+            /*height: 20px;*/
+        /*}*/
+        #chart1,#date1,#chart2,#date2,#chart4,#chart5,#date5,#chart8,#chart10,#date10{
+            height: 250px;
         }
         #chart3,#date3{
-            height: 180px;
+            height: 220px;
         }
         #date4{
             height: 150px;
         }
         #chart6,#date6,#chart7,#date7{
-            height: 350px;
+            height: 300px;
         }
-        #chart1,#chart2,#chart3,#chart5,#chart6,#chart7{
+        #chart1,#chart2,#chart3,#chart5,#chart6,#chart7,#chart10{
             border-right:1px solid #433f3e;
             padding: 0;
         }
-        /*#date1{*/
-            /*margin-right:30px;*/
-        /*}*/
         .label{
             background-color: #2c373d;
             text-align:left;
         }
-        #date1 p,#date2 p,#date5 p,#date6 p{
+        #date1 p,#date2 p,#date5 p{
             margin-bottom:3px;
             font-size:12px;
+        }
+        #date6 p{
+            font-size: 12px;
+            margin-bottom:0;
+        }
+        #date10 p{
+            font-size: 12px;
+            margin-bottom:-1px;
         }
         hr.dash{
             margin:0;
@@ -55,13 +72,17 @@
         .container{
             width: 80%;
             border:1px solid #433f3e;
-            margin-top:60px;
+            margin-top:70px;
+            margin-left: 14%;
+            padding: 0 5px;
         }
         .table-responsive{
             width: 80%;
             margin:0 auto;
             border:0 solid #433f3e;
             margin-top: 25px;
+            display: none;
+            margin-left: 14%;
         }
         table{
             width: 100%;
@@ -93,13 +114,16 @@
             padding:0;
             text-align: center;
         }
-        #date2 li.title{
+        #date2 li{
             color: #1fb56d;
+        }
+        #date2 li.title{
+            color:#c1b8bb;
         }
         #date3 li,#date7 li{
             list-style: none;
             float: left;
-            text-align: left;
+            text-align: center;
             color:#1fb56d;
         }
         #date3 li.title,#date7 li.title{
@@ -130,7 +154,7 @@
             float: left;
             font-size:12px;
             text-align: center;
-            padding: 0.7px 0;
+            padding: 0.5px 0;
             line-height: 1.4;
             border-bottom: 1px solid #433f3e;
         }
@@ -144,7 +168,7 @@
             font-size:12px;
         }
         .actTitle{
-            height: 50px;
+            height: 53px;
             line-height:27px !important;
             padding: 0 8px !important;
         }
@@ -155,59 +179,69 @@
             font-size: 12px;
             text-align: center;
             padding: 0;
-            width: 20%;
+            width: 21%;
+            height: 35px;
             float: left;
             margin: 5px;
+            cursor:pointer;
         }
-        .beerTypeBtn .active{
+         .active{
             background-color: #20b66e;
-            border:1px solid #20b66e;
+            border:1px solid #20b66e !important;
+        }
+        .pieChart{
+            height: 200px;
+            overflow: hidden;
         }
         .pieChart li{
             list-style: none;
+            float: left;
+            height: 200px;
         }
         .chart9{
-            height: 300px;
+            height: 200px;
         }
     </style>
 </head>
 <body class="row" style="overflow-x: hidden">
     <!--header-->
-    <header class="col-xs-3">前一天</header>
-    <header class="col-xs-6" style="padding-right:10px;padding-left:10px;">济南大区销售运营日报<span class="month"></span>月 <span class="day"></span>日</header>
-    <header class="col-xs-3">后一天</header>
+    <header class="col-xs-2"></header>
+    <!--<header class="date col-xs-2">前一天</header>-->
+    <header class="col-xs-8" style="padding:0;">济南大区销售运营日报<span class="month"></span>月<span class="day"></span>日</header>
+    <!--<header class="date col-xs-2">后一天</header>-->
+    <header class="col-xs-2"></header>
     <!--body-->
     <!--section one-->
     <section class="row">
-        <h4 class="col-xs-12" style="margin-left:30px;margin-top: 25px;">
+        <h4 class="col-xs-12" style="margin-left:30px;margin-top: 15px;">
             <img src="images/1.png" alt="业代在线比" width=38 height=40>
             业代在线比
         </h4>
-        <div class="container" style="margin-top: 90px;">
+        <div class="container" style="margin-top: 105px;">
             <!--chart1-->
-            <div class="col-xs-6" id="chart1"></div>
-            <div class="col-xs-6" id="date1">
+            <div class="col-xs-7" id="chart1"></div>
+            <div class="col-xs-5" id="date1" style="padding: 0 1px">
                 <h5 class="label col-xs-12">昨天</h5>
-                <p>上线人数：<span>118</span></p>
+                <p>上线人数：<span class="sum">118</span></p>
                 <hr class="dash">
-                <p>上线人数：<span>118</span></p>
+                <p>当天登入人数：<span class="sum">118</span></p>
                 <hr class="dash">
-                <p>上线人数：<span>118</span></p>
+                <p>人均拜访终端数：<span class="sum">24</span></p>
                 <hr class="dash">
-                <p>上线人数：<span>118</span></p>
-                <div style="margin-top: 40px;"></div>
-                <h5 class="label col-xs-12">昨天</h5>
-                <p>上线人数：<span>118</span></p>
+                <p>用户使用率：<span class="sum">47.5%</span></p>
+                <div style="margin-top: 5px;"></div>
+                <h5 class="label col-xs-12">前天</h5>
+                <p>上线人数：<span class="sum">118</span></p>
                 <hr class="dash">
-                <p>上线人数：<span>118</span></p>
+                <p>当天登入人数：<span class="sum">118</span></p>
                 <hr class="dash">
-                <p>上线人数：<span>118</span></p>
+                <p>人均拜访终端数：<span class="sum">24</span></p>
                 <hr class="dash">
-                <p>上线人数：<span>118</span></p>
+                <p>用户使用率：<span class="sum">47.5%</span></p>
             </div>
         </div>
-        <!--table-->
-        <div class="table-responsive">
+        <!--table1-->
+        <div class="table-responsive table1">
             <table border="1" cellpadding="1" cellspacing="1" bordercolor="#433f3e">
                 <thead>
                 <tr>
@@ -287,18 +321,18 @@
     <!--section two-->
     <section class="row" style="margin-top: 30px;">
         <h4 class="col-xs-12" style="margin-left:30px;">
-            <img src="images/2.png" alt="访时分布占比" width=38 height=35 >
-            业代在线比
+            <img src="images/2.png" alt="访时分布占比" width=48 height=40 >
+            访时分布占比
         </h4>
         <div class="container">
             <!--chart2-->
-            <div class="col-xs-6" id="chart2"></div>
-            <div class="col-xs-6" id="date2">
+            <div class="col-xs-7" id="chart2"></div>
+            <div class="col-xs-5" id="date2" style="padding: 0 1px;">
                 <h5 class="label col-xs-12">昨天</h5>
                 <ul class="col-xs-12">
                     <li class="title col-xs-4">时间</li>
-                    <li class="title  col-xs-4">数量</li>
-                    <li class="title  col-xs-4">占比</li>
+                    <li class="title col-xs-4">数量</li>
+                    <li class="title col-xs-4">占比</li>
                     <li class="col-xs-4">12:00</li>
                     <li class="col-xs-4">222</li>
                     <li class="col-xs-4">15%</li>
@@ -312,7 +346,7 @@
                     <li class="col-xs-4">26</li>
                     <li class="col-xs-4">2%</li>
                 </ul>
-                <h5 class="label col-xs-12" style="margin-top: 40px;">前天</h5>
+                <h5 class="label col-xs-12" style="margin-top: 10px;">前天</h5>
                 <ul class="col-xs-12">
                     <li class="title col-xs-4">时间</li>
                     <li class="title  col-xs-4">数量</li>
@@ -333,7 +367,7 @@
             </div>
         </div>
         <!--table2-->
-        <div class="table-responsive">
+        <div class="table-responsive table2">
             <table border="1" cellpadding="1" cellspacing="1" bordercolor="#433f3e">
                 <thead>
                 <tr>
@@ -413,16 +447,16 @@
     <!--section three-->
     <section class="row" style="margin-top: 30px;">
         <h4 class="col-xs-12" style="margin-left:30px;">
-            <img src="images/2.png" alt="单店拜访时长" width=38 height=35 >
+            <img src="images/3.png" alt="单店拜访时长" width=46 height=40 >
             单店拜访时长
         </h4>
         <div class="container">
             <!--chart3-->
             <div class="col-xs-8" id="chart3"></div>
-            <div class="col-xs-4" id="date3">
-                <ul class="col-xs-12" style="padding: 0;margin-left: 10px;margin-top: 30px;">
+            <div class="col-xs-4" id="date3" style="padding:0 1px">
+                <ul class="col-xs-12" style="padding: 0;margin-left: 4px;margin-top: 30px;">
                     <li class="title col-xs-6">渠道</li>
-                    <li class="title col-xs-6">访时（分）</li>
+                    <li class="title col-xs-6">访时/分</li>
                     <li class="col-xs-6">
                         <i class="fa fa-circle"></i>
                         KA
@@ -452,7 +486,7 @@
             </div>
         </div>
         <!--table3-->
-        <div class="table-responsive">
+        <div class="table-responsive table3">
             <table border="1" cellpadding="1" cellspacing="1" bordercolor="#433f3e">
                 <thead>
                 <tr>
@@ -510,12 +544,12 @@
     <!--section four-->
     <section class="row" style="margin-top: 30px;">
         <h4 class="col-xs-12" style="margin-left:30px;">
-            <img src="images/2.png" alt="终端拜访频率" width=38 height=35 >
+            <img src="images/4.png" alt="终端拜访频率" width=60 height=40 >
             终端拜访频率
         </h4>
         <div class="container">
             <!--chart4-->
-            <div class="col-xs-12" id="chart4"></div>
+            <div class="col-xs-12" id="chart4" style="padding: 0;"></div>
             <div class="col-xs-12" id="date4" style="border-top:1px solid #433f3e">
                 <ul class="col-xs-12" style="padding: 0;margin-left: 10px;margin-top: 30px;">
                     <li class="title col-xs-3">周期</li>
@@ -546,7 +580,7 @@
             </div>
         </div>
         <!--table4-->
-        <div class="table-responsive">
+        <div class="table-responsive table4">
             <table border="1" cellpadding="1" cellspacing="1" bordercolor="#433f3e">
                 <thead>
                 <tr>
@@ -636,30 +670,30 @@
     <!--section five-->
     <section class="row">
         <h4 class="col-xs-12" style="margin-left:30px;margin-top: 25px;">
-            <img src="images/1.png" alt="竞品终端铺货率" width=38 height=40>
+            <img src="images/5.png" alt="竞品终端铺货率" width=46 height=40>
             竞品终端铺货率
         </h4>
-        <div class="container" style="margin-top: 90px;padding:0">
+        <div class="container" style="margin-top:80px;padding:0">
             <!--chart5-->
             <div class="col-xs-7" id="chart5"></div>
-            <div class="col-xs-5" id="date5" style="padding:0 5px">
+            <div class="col-xs-5" id="date5" style="padding:0">
                 <h5 class="label col-xs-12">昨天</h5>
-                <p>终端总数：<span>31,047</span></p>
+                <p>终端总数：<span class="sum">31,047</span></p>
                 <hr class="dash">
-                <p>竞品终端总数：<span>6,035</span></p>
+                <p>竞品终端总数：<span class="sum">6,035</span></p>
                 <hr class="dash">
-                <p>竞品铺货率：<span>19.5%</span></p>
-                <div style="margin-top: 40px;"></div>
+                <p>竞品铺货率：<span class="sum">19.5%</span></p>
+                <div style="margin-top:20px;"></div>
                 <h5 class="label col-xs-12">前天</h5>
-                <p>终端总数：<span>31,047</span></p>
+                <p>终端总数：<span class="sum">31,047</span></p>
                 <hr class="dash">
-                <p>竞品终端总数：<span>6,035</span></p>
+                <p>竞品终端总数：<span class="sum">6,035</span></p>
                 <hr class="dash">
-                <p>竞品铺货率：<span>19.5%</span></p>
+                <p>竞品铺货率：<span class="sum">19.5%</span></p>
             </div>
         </div>
         <!--table-->
-        <div class="table-responsive">
+        <div class="table-responsive table5">
             <table border="1" cellpadding="1" cellspacing="1" bordercolor="#433f3e">
                 <thead>
                 <tr>
@@ -729,34 +763,34 @@
     <!--section six-->
     <section class="row">
         <h4 class="col-xs-12" style="margin-left:30px;margin-top: 25px;">
-            <img src="images/1.png" alt="协议店执行到位率" width=38 height=40>
+            <img src="images/6.png" alt="协议店执行到位率" width=48 height=40>
             协议店执行到位率
         </h4>
-        <div class="container" style="margin-top: 90px;padding:0">
+        <div class="container" style="margin-top: 80px;padding:0">
             <!--chart6-->
             <div class="col-xs-7" id="chart6"></div>
             <div class="col-xs-5" id="date6" style="padding:0 5px">
                 <h5 class="label col-xs-12">昨天</h5>
-                <p>终端总数：<span>31,047</span></p>
+                <p>终端总数：<span class="sum">31,047</span></p>
                 <hr class="dash">
-                <p>协议店终端总数：<span>6,035</span></p>
+                <p>协议店终端总数：<span class="sum">6,035</span></p>
                 <hr class="dash">
-                <p>执行到位终端数：<span>19.5%</span></p>
+                <p>执行到位终端数：<span class="sum">19.5%</span></p>
                 <hr class="dash">
-                <p>执行到位率：<span>19.5%</span></p>
-                <div style="margin-top: 40px;"></div>
+                <p>执行到位率：<span class="sum">19.5%</span></p>
+                <div style="margin-top: 0px;"></div>
                 <h5 class="label col-xs-12">前天</h5>
-                <p>终端总数：<span>31,047</span></p>
+                <p>终端总数：<span class="sum">31,047</span></p>
                 <hr class="dash">
-                <p>协议店终端总数：<span>6,035</span></p>
+                <p>协议店终端总数：<span class="sum">6,035</span></p>
                 <hr class="dash">
-                <p>执行到位终端数：<span>19.5%</span></p>
+                <p>执行到位终端数：<span class="sum">19.5%</span></p>
                 <hr class="dash">
-                <p>执行到位率：<span>19.5%</span></p>
+                <p>执行到位率：<span class="sum">19.5%</span></p>
             </div>
         </div>
-        <!--table-->
-        <div class="table-responsive">
+        <!--table6-->
+        <div class="table-responsive table6">
             <table border="1" cellpadding="1" cellspacing="1" bordercolor="#433f3e">
                 <thead>
                 <tr>
@@ -826,10 +860,10 @@
     <!--section seven-->
     <section class="row">
         <h4 class="col-xs-12" style="margin-left:30px;margin-top: 25px;">
-            <img src="images/1.png" alt="关键产品铺货率" width=38 height=40>
+            <img src="images/7.png" alt="关键产品铺货率" width=59 height=40>
             关键产品铺货率
         </h4>
-        <div class="container" style="margin-top: 90px;padding:0">
+        <div class="container" style="margin-top: 80px;padding:0">
             <!--chart7-->
             <div class="col-xs-8" id="chart7"></div>
             <div class="col-xs-4" id="date7" style="padding:0">
@@ -848,7 +882,7 @@
                     <li class="col-xs-7">纯生500箱</li>
                     <li class="col-xs-5">33.9%</li>
                 </ul>
-                <h5 class="label col-xs-12" style="margin-top: 40px;">上月铺货率</h5>
+                <h5 class="label col-xs-12" style="margin-top: 10px;">上月铺货率</h5>
                 <ul class="col-xs-12" style="padding: 0;">
                     <li class="title col-xs-7">产品</li>
                     <li class="title col-xs-5">铺货率</li>
@@ -865,8 +899,8 @@
                 </ul>
             </div>
         </div>
-        <!--table-->
-        <div class="table-responsive">
+        <!--table7-->
+        <div class="table-responsive table7">
             <table border="1" cellpadding="1" cellspacing="1" bordercolor="#433f3e">
                 <thead>
                 <tr>
@@ -944,15 +978,15 @@
     <!--section eight-->
     <section class="row" style="margin-top: 30px;">
         <h4 class="col-xs-12" style="margin-left:30px;">
-            <img src="images/2.png" alt="促销活动/重点事项统计" width=38 height=35 >
+            <img src="images/8.png" alt="促销活动/重点事项统计" width=45 height=40 >
             促销活动/重点事项统计
         </h4>
         <div class="container">
             <!--chart4-->
-            <div class="col-xs-12" id="chart8"></div>
+            <div class="col-xs-12" id="chart8" style="padding: 0;"></div>
         </div>
         <!--table8-->
-        <div class="activity container" style="padding:0;margin-top:20px";>
+        <div class="activity container table8" style="padding:0;margin-top:20px;display: none;margin-left: 14%";>
             <div class="col-xs-4" style="padding:0">
                 <ul class="col-xs-12" style="padding:0">
                     <li class="actTitle col-xs-6">二级区域</li>
@@ -973,22 +1007,25 @@
                     <li class="col-xs-6">255</li>
                     <li class="col-xs-6">庄寨</li>
                     <li class="col-xs-6">442</li>
-                    <li class="sum col-xs-6">大区合计</li>
+                    <li class="sum col-xs-6">合计</li>
                     <li class="sum col-xs-6">4421</li>
                 </ul>
             </div>
             <div class="col-xs-8" style="padding: 0">
-                <p style="color:#ea554e;font-size: 12px;text-align: center;margin:0;border-left:1px solid #433f3e">
+                <p style="color:#ea554e;font-size: 12px;text-align: center;margin:0;border-left:1px solid #433f3e;height:17px">
                     &lt;温馨提示:向左滑动可查看其他活动&gt;
                 </p>
                 <div style="overflow: auto;display: block">
-                <table class="activityTable" border="1" cellpadding="1" cellspacing="1" bordercolor="#433f3e">                         <tr>
-                        <td>促销活动七个字</td>
-                        <td>促销活动七个字</td>
-                        <td>促销活动七个字</td>
-                        <td>促销活动七个字</td>
-                        <td>促销活动七个字</td>
-                  </tr>
+                <table class="activityTable" border="1" cellpadding="1" cellspacing="1" bordercolor="#433f3e">
+                    <thead>
+                        <tr style="height:35px">
+                            <td>促销活动七个字</td>
+                            <td>促销活动七个字</td>
+                            <td>促销活动七个字</td>
+                            <td>促销活动七个字</td>
+                            <td>促销活动七个字</td>
+                        </tr>
+                    </thead>
                     <tr>
                         <td>8</td>
                         <td>8</td>
@@ -1060,11 +1097,11 @@
     <!--section nine-->
     <section class="row" style="margin-top: 30px;">
         <h4 class="col-xs-12" style="margin-left:30px;">
-            <img src="images/2.png" alt="价格执行到位率" width=38 height=35 >
+            <img src="images/9.png" alt="价格执行到位率" width=43 height=40 >
             价格执行到位率
         </h4>
-        <div class="beerTypeBtn container" style="border:1px solid transparent">
-            <ul class="col-xs-12">
+        <div class="beerTypeBtn container" style="border:1px solid transparent;padding: 0">
+            <ul class="col-xs-12" style="padding:0">
                 <li class="active">奥古特大瓶</li>
                 <li class="">纯生大瓶</li>
                 <li class="">1903大瓶</li>
@@ -1086,7 +1123,135 @@
                     <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of1"></div>
                     <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of2"></div>
                 </li>
+                <li class="col-xs-12" style="padding: 0">
+                    <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of3"></div>
+                    <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of4"></div>
+                </li>
+                <li class="col-xs-12" style="padding: 0">
+                    <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of5"></div>
+                    <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of6"></div>
+                </li>
+                <li class="col-xs-12" style="padding: 0">
+                    <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of7"></div>
+                    <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of8"></div>
+                </li>
+            <li class="col-xs-12" style="padding: 0">
+                <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of9"></div>
+                <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of10"></div>
+            </li>
+                <li class="col-xs-12" style="padding: 0">
+                    <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of11"></div>
+                    <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of12"></div>
+                </li>
+                <li class="col-xs-12" style="padding: 0">
+                <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of13"></div>
+                <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of14"></div>
+            </li>
+                <li class="col-xs-12" style="padding: 0">
+                    <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of15"></div>
+                    <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of16"></div>
+                </li><li class="col-xs-12" style="padding: 0">
+                <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of17"></div>
+                <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of18"></div>
+            </li>
+                <li class="col-xs-12" style="padding: 0">
+                    <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of19"></div>
+                    <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of20"></div>
+                </li><li class="col-xs-12" style="padding: 0">
+                <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of21"></div>
+                <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of22"></div>
+            </li>
+                <li class="col-xs-12" style="padding: 0">
+                    <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of23"></div>
+                    <div class="chart9 col-xs-6" style="padding: 0%" id="chart9of24"></div>
+                </li>
             </ul>
+        </div>
+    </section>
+    <!--section ten-->
+    <section class="row">
+        <h4 class="col-xs-12" style="margin-left:30px;margin-top: 25px;">
+            <img src="images/10.png" alt="终端库存" width=44 height=40>
+            终端库存
+        </h4>
+        <div class="container" style="position: relative">
+            <!--chart1-->
+            <div class="col-xs-8" id="chart10"></div>
+            <div class="col-xs-4" id="date10" style="padding:0;position: absolute;right:1%">
+                <h5 class="label col-xs-12">当月库存</h5>
+                <p>现代零售:<span  class="sum">31,047</span></p>
+                <hr class="dash">
+                <p>夜场零售:<span class="sum">22,047</span></p>
+                <hr class="dash">
+                <p>传统零售:<span class="sum">5,047</span></p>
+                <hr class="dash">
+                <p>餐饮渠道：<span class="sum">226</span></p>
+                <hr class="dash">
+                <p>特殊渠道:<span class="sum">215</span></p>
+                <div style="margin-top:0px;"></div>
+                <h5 class="label col-xs-12">上月库存</h5>
+                <p>现代零售:<span class="sum">31,047</span></p>
+                <hr class="dash">
+                <p>夜场零售:<span class="sum">22,047</span></p>
+                <hr class="dash">
+                <p>传统零售:<span class="sum">5,047</span></p>
+                <hr class="dash">
+                <p>餐饮渠道：<span class="sum">226</span></p>
+                <hr class="dash">
+                <p>特殊渠道:<span class="sum">215</span></p>
+            </div>
+        </div>
+        <!--table-->
+        <div class="table-responsive table10" style="margin-bottom: 60px"/>
+            <table border="1" cellpadding="1" cellspacing="1" bordercolor="#433f3e">
+                <thead>
+                <tr>
+                    <td style="width: 15%;">二级区域</td>
+                    <td style="width: 10%;">库存</td>
+                    <td style="width: 15%;">现代零售</td>
+                    <td style="width: 15%;">夜场渠道</td>
+                    <td style="width: 15%;">传统渠道</td>
+                    <td style="width: 15%;">餐饮渠道</td>
+                    <td style="width: 15%;">特殊渠道</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td style="width: 15%;" rowspan="2">曹县</td>
+                    <td style="width: 10%;">当月</td>
+                    <td style="width: 15%;">3,433</td>
+                    <td style="width: 15%;">3,433</td>
+                    <td style="width: 15%;">3,433</td>
+                    <td style="width: 15%;">3,433</td>
+                    <td style="width: 15%;">3,433</td>
+                </tr>
+                <tr>
+                    <td style="width: 10%;">上月</td>
+                    <td style="width: 15%;">3,433</td>
+                    <td style="width: 15%;">3,433</td>
+                    <td style="width: 15%;">3,433</td>
+                    <td style="width: 15%;">3,433</td>
+                    <td style="width: 15%;">3,433</td>
+                </tr>
+                <tr>
+                    <td class="sum" style="width: 15%;" rowspan="2">大区合计</td>
+                    <td style="width: 10%;">当月</td>
+                    <td class="sum" style="width: 15%;">23,433</td>
+                    <td class="sum" style="width: 15%;">23,433</td>
+                    <td class="sum" style="width: 15%;">23,433</td>
+                    <td class="sum" style="width: 15%;">23,433</td>
+                    <td class="sum" style="width: 15%;">23,433</td>
+                </tr>
+                <tr>
+                    <td style="width: 10%;">上月</td>
+                    <td class="sum" style="width: 15%;">23,433</td>
+                    <td class="sum" style="width: 15%;">23,433</td>
+                    <td class="sum" style="width: 15%;">23,433</td>
+                    <td class="sum" style="width: 15%;">23,433</td>
+                    <td class="sum" style="width: 15%;">23,433</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </section>
     <script>
@@ -1106,22 +1271,22 @@
                     textStyle: {
                         color: "#c1b8bb",
                     },
-
                     y:"bottom",
-//                    padding: "5px 0 15px",
-                    itemGap:5
+                    itemGap:5,
+                    itemWidth:10,
+                    itemHeight:10
                 },
                 grid: {
-                    left: '1%',
-                    right: '10%',
+                    left: '0%',
+                    right: '5%',
                     bottom: '25%',
-                    top:'2%',
+                    top:'15%',
                     containLabel: true
                 },
                 xAxis : [
                     {
                         type : 'category',
-                        data : ['今天','昨天'],
+                        data : ['昨天','前天'],
                         axisLabel: {
                             show: true,
                             textStyle: {
@@ -1138,14 +1303,22 @@
                             textStyle: {
                                 color: '#c1b8bb'
                             }
-                        }
+                        },
+                        splitLine : {
+                            show:true,
+                            lineStyle: {
+                                color: '#737277',
+                                type: 'dotted',
+                                width: 1
+                            }
+                        },
                     }
                 ],
                 series : [
                     {
                         name:'上线人数',
                         type:'bar',
-                        data:[118, 118],
+                        data:[400, 450],
                         barWidth:10,
                         itemStyle:{
                             normal:{
@@ -1156,8 +1329,7 @@
                     {
                         name:'当天登入人数',
                         type:'bar',
-                        stack: '广告',
-                        data:[56, 56],
+                        data:[280, 310],
                         barWidth:10,
                         itemStyle:{
                             normal:{
@@ -1169,7 +1341,7 @@
                     {
                         name:'人均拜访终端数',
                         type:'bar',
-                        data:[24, 24],
+                        data:[50, 50],
                         barWidth:10,
                         itemStyle:{
                             normal:{
@@ -1191,16 +1363,16 @@
                 textStyle: {
                     color: "#c1b8bb",
                 },
-
                 y:"bottom",
-//                    padding: "5px 0 15px",
-                itemGap:5
+                itemGap:5,
+                itemWidth:10,
+                itemHeight:10
             },
             grid: {
-                left: '1%',
+                left: '0%',
                 right: '5%',
-                bottom: '25%',
-                top:'12%',
+                bottom: '20%',
+                top:'10%',
                 containLabel: true
             },
             xAxis : [
@@ -1218,19 +1390,28 @@
             yAxis : [
                 {
                     type : 'value',
+                    interval: 500,
                     axisLabel: {
                         show: true,
                         textStyle: {
                             color: '#c1b8bb'
                         }
-                    }
+                    },
+                    splitLine : {
+                        show:true,
+                        lineStyle: {
+                            color: '#737277',
+                            type: 'dotted',
+                            width: 1
+                        }
+                    },
                 }
             ],
             series : [
                 {
                     name:'昨天',
                     type:'bar',
-                    data:[222, 1006,104,26],
+                    data:[222, 1806,104,26],
                     barWidth:6,
                     itemStyle:{
                         normal:{
@@ -1241,7 +1422,7 @@
                 {
                     name:'前天',
                     type:'bar',
-                    data:[222, 1812,481,13],
+                    data:[222, 1700,481,13],
                     barWidth:6,
                     itemStyle:{
                         normal:{
@@ -1272,7 +1453,15 @@
                     textStyle: {
                         color: '#c1b8bb'
                     }
-                }
+                },
+                splitLine : {
+                    show:true,
+                    lineStyle: {
+                        color: '#737277',
+                        type: 'dotted',
+                        width: 1
+                    }
+                },
             },
             yAxis: {
                 type: 'category',
@@ -1282,6 +1471,28 @@
                     show: true,
                     textStyle: {
                         color: '#c1b8bb'
+                    },formatter : function(params){
+                        var newParamsName = "";
+                        var paramsNameNumber = params.length;
+                        var provideNumber = 5;
+                        var rowNumber = Math.ceil(paramsNameNumber / provideNumber);
+                        if (paramsNameNumber > provideNumber) {
+                            for (var p = 0; p < rowNumber; p++) {
+                                var tempStr = "";
+                                var start = p * provideNumber;
+                                var end = start + provideNumber;
+                                if (p == rowNumber - 1) {
+                                    tempStr = params.substring(start, paramsNameNumber);
+                                } else {
+                                    tempStr = params.substring(start, end) + "\n";
+                                }
+                                newParamsName += tempStr;
+                            }
+
+                        } else {
+                            newParamsName = params;
+                        }
+                        return newParamsName
                     }
                 },
                 data: ['KA-现代零售渠道','NL-夜场渠道','S-传统零售渠道','OP-渠道餐饮','SP-特殊渠道']
@@ -1316,13 +1527,15 @@
 
                 y:"bottom",
 //                    padding: "5px 0 15px",
-                itemGap:5
+                itemGap:5,
+                itemWidth:10,
+                itemHeight:10
             },
             grid: {
                 left: '1%',
-                right: '5%',
-                bottom: '25%',
-                top:'12%',
+                right: '1%',
+                bottom: '30%',
+                top:'5%',
                 containLabel: true
             },
             xAxis : [
@@ -1345,7 +1558,15 @@
                         textStyle: {
                             color: '#c1b8bb'
                         }
-                    }
+                    },
+                    splitLine : {
+                        show:true,
+                        lineStyle: {
+                            color: '#737277',
+                            type: 'dotted',
+                            width: 1
+                        }
+                    },
                 }
             ],
             series : [
@@ -1415,7 +1636,7 @@
             grid: {
                 left: '1%',
                 right: '1%',
-                bottom: '25%',
+                bottom: '30%',
                 top:'12%',
                 containLabel: true
             },
@@ -1426,6 +1647,9 @@
                 },
 
                 y:"bottom",
+                itemGap:5,
+                itemWidth:10,
+                itemHeight:10
             },
             xAxis: [
                 {
@@ -1443,13 +1667,20 @@
                 {
                     type: 'value',
                     min: 0,
-                    interval: 10000,
                     axisLabel: {
                         formatter: '{value}',
                         textStyle: {
                             color: '#c1b8bb'
                         }
-                    }
+                    },
+                    splitLine : {
+                        show:true,
+                        lineStyle: {
+                            color: '#737277',
+                            type: 'dotted',
+                            width: 1
+                        }
+                    },
                 },
                 {
                     type: 'value',
@@ -1460,7 +1691,15 @@
                         textStyle: {
                             color: '#c1b8bb'
                         }
-                    }
+                    },
+                    splitLine : {
+                        show:false,
+                        lineStyle: {
+                            color: '#737277',
+                            type: 'dotted',
+                            width: 1
+                        }
+                    },
                 }
             ],
             series: [
@@ -1508,7 +1747,7 @@
             grid: {
                 left: '1%',
                 right: '1%',
-                bottom: '30%',
+                bottom: '40%',
                 top:'12%',
                 containLabel: true
             },
@@ -1518,6 +1757,9 @@
                     color: "#c1b8bb",
                 },
                 y:"bottom",
+                itemGap:5,
+                itemWidth:10,
+                itemHeight:10
             },
             xAxis: [
                 {
@@ -1541,7 +1783,15 @@
                         textStyle: {
                             color: '#c1b8bb'
                         }
-                    }
+                    },
+                    splitLine : {
+                        show:true,
+                        lineStyle: {
+                            color: '#737277',
+                            type: 'dotted',
+                            width: 1
+                        }
+                    },
                 },
                 {
                     type: 'value',
@@ -1552,6 +1802,9 @@
                         textStyle: {
                             color: '#c1b8bb'
                         }
+                    },
+                    splitLine : {
+                        show:false,
                     }
                 }
             ],
@@ -1570,7 +1823,7 @@
                 {
                     name:'协议店终端总数',
                     type:'bar',
-                    data:[8000, 9000],
+                    data:[18000, 19000],
                     barWidth:7,
                     itemStyle:{
                         normal:{
@@ -1611,8 +1864,8 @@
             grid: {
                 left: '1%',
                 right: '5%',
-                bottom: '15%',
-                top:'12%',
+                bottom: '25%',
+                top:'5%',
                 containLabel: true
             },
             legend: {
@@ -1621,6 +1874,9 @@
                     color: "#c1b8bb",
                 },
                 y:"bottom",
+                itemGap:5,
+                itemWidth:10,
+                itemHeight:10
             },
             xAxis: {
                 type: 'value',
@@ -1633,7 +1889,15 @@
                     textStyle: {
                         color: '#c1b8bb'
                     }
-                }
+                },
+                splitLine : {
+                    show:true,
+                    lineStyle: {
+                        color: '#737277',
+                        type: 'dotted',
+                        width: 1
+                    }
+                },
             },
             yAxis: {
                 type: 'category',
@@ -1643,6 +1907,29 @@
                     show: true,
                     textStyle: {
                         color: '#c1b8bb'
+                    },
+                    formatter : function(params){
+                        var newParamsName = "";
+                        var paramsNameNumber = params.length;
+                        var provideNumber = 5;
+                        var rowNumber = Math.ceil(paramsNameNumber / provideNumber);
+                        if (paramsNameNumber > provideNumber) {
+                            for (var p = 0; p < rowNumber; p++) {
+                                var tempStr = "";
+                                var start = p * provideNumber;
+                                var end = start + provideNumber;
+                                if (p == rowNumber - 1) {
+                                    tempStr = params.substring(start, paramsNameNumber);
+                                } else {
+                                    tempStr = params.substring(start, end) + "\n";
+                                }
+                                newParamsName += tempStr;
+                            }
+
+                        } else {
+                            newParamsName = params;
+                        }
+                        return newParamsName
                     }
                 },
                 data: ['纯生500箱','(1903)500箱','白啤500箱','纯生500罐','经典600箱']
@@ -1652,7 +1939,7 @@
                 {
                     name: '本月铺货终端数',
                     type: 'bar',
-                    barWidth:16,
+                    barWidth:8,
                     itemStyle:{
                         normal:{
                             color:"#1fb56d"
@@ -1662,7 +1949,7 @@
                 },{
                     name: '上月铺货终端数',
                     type: 'bar',
-                    barWidth:16,
+                    barWidth:8,
                     itemStyle:{
                         normal:{
                             color:"#019fe8"
@@ -1686,12 +1973,14 @@
                 },
 
                 y:"bottom",
-                itemGap:5
+                itemGap:5,
+                itemWidth:10,
+                itemHeight:10
             },
             grid: {
                 left: '1%',
                 right: '1%',
-                bottom: '10%',
+                bottom: '20%',
                 top:'10%',
                 containLabel: true
             },
@@ -1715,7 +2004,15 @@
                         textStyle: {
                             color: '#c1b8bb'
                         }
-                    }
+                    },
+                    splitLine : {
+                        show:true,
+                        lineStyle: {
+                            color: '#737277',
+                            type: 'solid',
+                            width: 1
+                        }
+                    },
                 }
             ],
             series : [
@@ -1752,13 +2049,16 @@
                 textStyle: {
                     color: "#c1b8bb",
                 },
+                itemGap:5,
+                itemWidth:10,
+                itemHeight:10
             },
             series : [
                 {
                     name: 'OP渠道',
                     type: 'pie',
-                    radius : '80%',
-                    center: ['50%', '50%'],
+                    radius : '55%',
+                    center: ['50%', '40%'],
                     data:[
                         {
                             value:40,
@@ -1829,13 +2129,16 @@
                 textStyle: {
                     color: "#c1b8bb",
                 },
+                itemGap:5,
+                itemWidth:10,
+                itemHeight:10
             },
             series : [
                 {
                     name: 'S+KA+SP渠道',
                     type: 'pie',
-                    radius : '80%',
-                    center: ['50%', '50%'],
+                    radius : '55%',
+                    center: ['50%', '40%'],
                     data:[
                         {
                             value:40,
@@ -1884,6 +2187,264 @@
                 }
             ]
         };
+        var option9of3 = {
+            title : {
+                text: 'S+KA+SP渠道',
+                x:'center',
+                textStyle: {
+                    color: "#c1b8bb",
+                }
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c}%"
+            },
+            color:['#f08437','#ea5550','#f6ab00'],
+            legend: {
+                orient: 'vertical',
+                bottom: 'left',
+                data: ['低于8元','8元-10元','高于10元'],
+                textStyle: {
+                    color: "#c1b8bb",
+                },
+                itemGap:5,
+                itemWidth:10,
+                itemHeight:10
+            },
+            series : [
+                {
+                    name: 'S+KA+SP渠道',
+                    type: 'pie',
+                    radius : '55%',
+                    center: ['50%', '40%'],
+                    data:[
+                        {
+                            value:40,
+                            name:'低于8元',
+                            x: 10,
+                            y: 10,
+                            textStyle: {
+                                color: "#c1b8bb",
+                            },
+//                            itemStyle: {
+//                                normal: {
+//                                    labelLine:{show:false,length:1},label:{show:false}
+//                                }
+//                        }
+                        },
+                        {value:10,
+                            name:'8元-10元',
+                            textStyle: {
+                                color: "#c1b8bb",
+                            }
+//                            itemStyle:
+//                            {normal:{labelLine:{show:false},label:{show:false}}}
+                        },
+                        {value:35,
+                            name:'高于10元',
+                            textStyle: {
+                                color: "#c1b8bb",
+                            }
+//                            itemStyle:
+//                            {normal:
+//                                {labelLine:{show:false},                                        label:{show:false}
+//                                }
+//                            }
+                        }
+                    ],
+                    itemStyle:{
+                        normal:{
+                            label:{
+                                show: true,
+                                formatter: '{c}%',
+                                position:'inside'
+                            },
+                            labelLine :{show:false,}
+                        }
+                    }
+                }
+            ]
+        };
+        var option9of4 = {
+            title : {
+                text: 'OP渠道',
+                x:'center',
+                textStyle: {
+                    color: "#c1b8bb",
+                }
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c}%"
+            },
+            color:['#20b66e','#00a0e8','#7f308c'],
+            legend: {
+                orient: 'vertical',
+                bottom: 'left',
+                data: ['低于12元','12元-15元','高于12元'],
+                textStyle: {
+                    color: "#c1b8bb",
+                },
+                itemGap:5,
+                itemWidth:10,
+                itemHeight:10
+            },
+            series : [
+                {
+                    name: 'OP渠道',
+                    type: 'pie',
+                    radius : '55%',
+                    center: ['50%', '40%'],
+                    data:[
+                        {
+                            value:40,
+                            name:'低于12元',
+                            icon:'pie',
+                            textStyle: {
+                                color: "#c1b8bb",
+                            },
+//                            itemStyle: {
+//                                normal: {
+//                                    labelLine:{show:false,length:1},label:{show:false}
+//                                }
+//                        }
+                        },
+                        {value:10,
+                            name:'12元-15元',
+                            icon:'stack',
+                            textStyle: {
+                                color: "#c1b8bb",
+                                icon:'image://images/1.png'
+                            }
+//                            itemStyle:
+//                            {normal:{labelLine:{show:false},label:{show:false}}}
+                        },
+                        {value:35,
+                            name:'高于12元',
+                            icon:'image://images/1.png',
+                            textStyle: {
+                                color: "#c1b8bb",
+                            }
+//                            itemStyle:
+//                            {normal:
+//                                {labelLine:{show:false},                                        label:{show:false}
+//                                }
+//                            }
+                        }
+                    ],
+                    itemStyle:{
+                        normal:{
+                            label:{
+                                show: true,
+                                formatter: '{c}%',
+                                position:'inside'
+                            },
+                            labelLine :{show:false,}
+                        }
+                    }
+                }
+            ]
+        };
+        var option10 = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            grid: {
+                left: '0%',
+                right: '10%',
+                bottom: '20%',
+                top:"0%",
+                containLabel: true
+            },
+            legend: {
+                orient: 'vertical',
+                bottom: 'left',
+                data: ['当月库存','上月库存'],
+                textStyle: {
+                    color: "#c1b8bb",
+                },
+                itemGap:5,
+                itemWidth:10,
+                itemHeight:10
+            },
+            xAxis: {
+                type: 'value',
+                boundaryGap: [0, 0.01],
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        color: '#c1b8bb'
+                    }
+                },
+                splitLine : {
+                    show:true,
+                    lineStyle: {
+                        color: '#737277',
+                        type: 'dotted',
+                        width: 1
+                    }
+                },
+            },
+            yAxis: {
+                type: 'category',
+                boundaryGap: [0, 0.01],
+                rotate: 60,
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        color: '#c1b8bb'
+                    },formatter : function(params){
+                        var newParamsName = "";
+                        var paramsNameNumber = params.length;
+                        var provideNumber = 5;
+                        var rowNumber = Math.ceil(paramsNameNumber / provideNumber);
+                        if (paramsNameNumber > provideNumber) {
+                            for (var p = 0; p < rowNumber; p++) {
+                                var tempStr = "";
+                                var start = p * provideNumber;
+                                var end = start + provideNumber;
+                                if (p == rowNumber - 1) {
+                                    tempStr = params.substring(start, paramsNameNumber);
+                                } else {
+                                    tempStr = params.substring(start, end) + "\n";
+                                }
+                                newParamsName += tempStr;
+                            }
+
+                        } else {
+                            newParamsName = params;
+                        }
+                        return newParamsName
+                    }
+                },
+                data: ['KA-现代零售渠道','NL-夜场渠道','S-传统零售渠道','OP-渠道餐饮','SP-特殊渠道']
+
+            },
+            series: [
+                {
+                    name: '当月库存',
+                    type: 'bar',
+                    barWidth:8,
+                    itemStyle:{
+                        normal:{
+                            color:"#1fb56d"
+                        }
+                    },
+                    data: [13, 21, 13, 24, 15]
+                },
+                {
+                    name: '上月库存',
+                    type: 'bar',
+                    barWidth:8,
+                    itemStyle:{
+                        normal:{
+                            color:"#019fe8"
+                        }
+                    },
+                    data: [10, 18, 12, 20, 10]
+                }
+            ]
+        };
         echart('chart1',option1);
         echart('chart2',option2);
         echart('chart3',option3);
@@ -1894,6 +2455,99 @@
         echart('chart8',option8);
         echart('chart9of1',option9of1);
         echart('chart9of2',option9of2);
+        echart('chart9of3',option9of3);
+        echart('chart9of4',option9of4);
+        echart('chart9of5',option9of1);
+        echart('chart9of6',option9of2);
+        echart('chart9of7',option9of3);
+        echart('chart9of8',option9of4);
+        echart('chart9of9',option9of1);
+        echart('chart9of10',option9of2);
+        echart('chart9of11',option9of3);
+        echart('chart9of12',option9of4);
+        echart('chart9of13',option9of1);
+        echart('chart9of14',option9of2);
+        echart('chart9of15',option9of3);
+        echart('chart9of16',option9of4);
+        echart('chart9of17',option9of3);
+        echart('chart9of18',option9of4);
+        echart('chart9of19',option9of1);
+        echart('chart9of20',option9of2);
+        echart('chart9of21',option9of1);
+        echart('chart9of22',option9of2);
+        echart('chart9of23',option9of3);
+        echart('chart9of24',option9of4);
+        echart('chart10',option10);
+//        价格执行到位率
+        $(".beerTypeBtn li").click(function(){
+//            alert($(this).index());
+            var _index = $(this).index();
+            $(this).addClass("active").siblings().removeClass("active");
+            $(".pieChart li").eq(_index).show().siblings().hide();
+        });
+        var date = new Date();
+        var month = date.getMonth();
+        var day = date.getDate();
+        $(".month").append(month+1);
+        $(".day").append(day);
+        $(".date").click(function(){
+            $(this).addClass("active").siblings().removeClass("active");
+        });
+//        echart and table
+//        var flag = true;
+//        function showTable(chart,getTable){
+//            var chart = $("#"+chart);
+//            var getTable = $("."+table);
+//            chart.click(function(){
+//                if(flag=="true") {
+//                    getTable.show();
+//                    flag = false;
+//                }else if(flag=="false"){
+//                    getTable.hide();
+//                    flag = true;
+//                }
+//            });
+//        }
+//        showTable("chart1","table1");
+        var flag = false;
+        function showTable(getChart,getTable){
+            var getChart = $("#"+getChart);
+            var getTable = $("."+getTable);
+            getChart.click(function(){
+                if(flag==false){
+                    getTable.show();
+                    flag=true;
+//                    alert(1);
+                }else if(flag==true){
+                    getTable.hide();
+                    flag=false;
+//                    alert(2);
+                }
+            });
+        }
+
+        showTable("chart1","table1");
+        showTable("chart2","table2");
+        showTable("chart3","table3");
+        showTable("chart4","table4");
+        showTable("chart5","table5");
+        showTable("chart6","table6");
+        showTable("chart7","table7");
+        showTable("chart8","table8");
+        showTable("chart10","table10");
+
+//        $("#chart1").click(function(){
+////            alert(1);
+//            if(flag==false){
+//                $(".table1").show();
+//                flag=true;
+//                alert(1);
+//            }else if(flag==true){
+//                $(".table1").hide();
+//                flag=false;
+//                alert(2);
+//            }
+//        });
     </script>
 </body>
 </html>
