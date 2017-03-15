@@ -33,11 +33,8 @@
             /*padding:0;*/
             /*height: 20px;*/
         /*}*/
-        #chart1,#date1,#chart2,#date2,#chart4,#chart5,#date5,#chart8,#chart10,#date10{
+        #chart1,#date1,#chart2,#date2,#chart3,#date3,#chart4,#chart5,#date5,#chart8,#chart10,#date10{
             height: 250px;
-        }
-        #chart3,#date3{
-            height: 220px;
         }
         #date4{
             height: 150px;
@@ -180,10 +177,12 @@
             text-align: center;
             padding: 0;
             width: 21%;
-            height: 35px;
+            height: 37px;
             float: left;
             margin: 5px;
             cursor:pointer;
+            display: block;
+            padding:2px 5px;
         }
          .active{
             background-color: #20b66e;
@@ -201,20 +200,25 @@
         .chart9{
             height: 200px;
         }
+        .beerTypeBtn p{
+            width: 100%;
+            height: 100%;
+            vertical-align: middle;
+        }
     </style>
 </head>
 <body class="row" style="overflow-x: hidden">
     <!--header-->
     <header class="col-xs-2"></header>
     <!--<header class="date col-xs-2">前一天</header>-->
-    <header class="col-xs-8" style="padding:0;">济南大区销售运营日报<span class="month"></span>月<span class="day"></span>日</header>
+    <header class="col-xs-8" style="padding:0;padding-left:14px;  ">济南大区销售运营日报<span class="month"></span>月<span class="day"></span>日</header>
     <!--<header class="date col-xs-2">后一天</header>-->
     <header class="col-xs-2"></header>
     <!--body-->
     <!--section one-->
     <section class="row">
         <h4 class="col-xs-12" style="margin-left:30px;margin-top: 15px;">
-            <img src="images/1.png" alt="业代在线比" width=38 height=40>
+            <img src="images/1.png" alt="业代在线比" width=28 height=30>
             业代在线比
         </h4>
         <div class="container" style="margin-top: 105px;">
@@ -321,7 +325,7 @@
     <!--section two-->
     <section class="row" style="margin-top: 30px;">
         <h4 class="col-xs-12" style="margin-left:30px;">
-            <img src="images/2.png" alt="访时分布占比" width=48 height=40 >
+            <img src="images/2.png" alt="访时分布占比" width=38 height=30 >
             访时分布占比
         </h4>
         <div class="container">
@@ -447,7 +451,7 @@
     <!--section three-->
     <section class="row" style="margin-top: 30px;">
         <h4 class="col-xs-12" style="margin-left:30px;">
-            <img src="images/3.png" alt="单店拜访时长" width=46 height=40 >
+            <img src="images/3.png" alt="单店拜访时长" width=36 height=30 >
             单店拜访时长
         </h4>
         <div class="container">
@@ -544,7 +548,7 @@
     <!--section four-->
     <section class="row" style="margin-top: 30px;">
         <h4 class="col-xs-12" style="margin-left:30px;">
-            <img src="images/4.png" alt="终端拜访频率" width=60 height=40 >
+            <img src="images/4.png" alt="终端拜访频率" width=50 height=30 >
             终端拜访频率
         </h4>
         <div class="container">
@@ -670,7 +674,7 @@
     <!--section five-->
     <section class="row">
         <h4 class="col-xs-12" style="margin-left:30px;margin-top: 25px;">
-            <img src="images/5.png" alt="竞品终端铺货率" width=46 height=40>
+            <img src="images/5.png" alt="竞品终端铺货率" width=36 height=30>
             竞品终端铺货率
         </h4>
         <div class="container" style="margin-top:80px;padding:0">
@@ -763,7 +767,7 @@
     <!--section six-->
     <section class="row">
         <h4 class="col-xs-12" style="margin-left:30px;margin-top: 25px;">
-            <img src="images/6.png" alt="协议店执行到位率" width=48 height=40>
+            <img src="images/6.png" alt="协议店执行到位率" width=38 height=30>
             协议店执行到位率
         </h4>
         <div class="container" style="margin-top: 80px;padding:0">
@@ -860,7 +864,7 @@
     <!--section seven-->
     <section class="row">
         <h4 class="col-xs-12" style="margin-left:30px;margin-top: 25px;">
-            <img src="images/7.png" alt="关键产品铺货率" width=59 height=40>
+            <img src="images/7.png" alt="关键产品铺货率" width=49 height=30>
             关键产品铺货率
         </h4>
         <div class="container" style="margin-top: 80px;padding:0">
@@ -978,7 +982,7 @@
     <!--section eight-->
     <section class="row" style="margin-top: 30px;">
         <h4 class="col-xs-12" style="margin-left:30px;">
-            <img src="images/8.png" alt="促销活动/重点事项统计" width=45 height=40 >
+            <img src="images/8.png" alt="促销活动/重点事项统计" width=35 height=30 >
             促销活动/重点事项统计
         </h4>
         <div class="container">
@@ -1097,23 +1101,23 @@
     <!--section nine-->
     <section class="row" style="margin-top: 30px;">
         <h4 class="col-xs-12" style="margin-left:30px;">
-            <img src="images/9.png" alt="价格执行到位率" width=43 height=40 >
+            <img src="images/9.png" alt="价格执行到位率" width=33 height=30 >
             价格执行到位率
         </h4>
         <div class="beerTypeBtn container" style="border:1px solid transparent;padding: 0">
             <ul class="col-xs-12" style="padding:0">
-                <li class="active">奥古特大瓶</li>
-                <li class="">纯生大瓶</li>
-                <li class="">1903大瓶</li>
-                <li class="">经典大瓶</li>
-                <li class="">奥古特500听</li>
-                <li class="">纯生500听</li>
-                <li class="">1903 500听</li>
-                <li class="">经典500听</li>
-                <li class="">奥古特330听</li>
-                <li class="">纯生330听</li>
-                <li class="">1903 330听</li>
-                <li class="">经典330听</li>
+                <li class="active"><p>奥古特 大瓶</p></li>
+                <li><p>纯 生 大 瓶</p></li>
+                <li><p>1903&nbsp; 大 瓶</p></li>
+                <li><p>经 典 大 瓶</p></li>
+                <li><p>奥古特500听</p></li>
+                <li><p>纯 生 500听</p></li>
+                <li><p>1903&nbsp; 500听</p></li>
+                <li><p>经 典 500听</p></li>
+                <li><p>奥古特330听</p></li>
+                <li><p>纯 生 330听</p></li>
+                <li><p>1903 330 听</p></li>
+                <li><p>经 典 330听</p></li>
             </ul>
         </div>
         <div class="container" style="margin-top: 20px;">
@@ -1171,11 +1175,11 @@
     <!--section ten-->
     <section class="row">
         <h4 class="col-xs-12" style="margin-left:30px;margin-top: 25px;">
-            <img src="images/10.png" alt="终端库存" width=44 height=40>
+            <img src="images/10.png" alt="终端库存" width=34 height=30>
             终端库存
         </h4>
         <div class="container" style="position: relative">
-            <!--chart1-->
+            <!--chart10-->
             <div class="col-xs-8" id="chart10"></div>
             <div class="col-xs-4" id="date10" style="padding:0;position: absolute;right:1%">
                 <h5 class="label col-xs-12">当月库存</h5>
@@ -1371,14 +1375,14 @@
             grid: {
                 left: '0%',
                 right: '5%',
-                bottom: '20%',
-                top:'10%',
+                bottom: '25%',
+                top:'15%',
                 containLabel: true
             },
             xAxis : [
                 {
                     type : 'category',
-                    data : ['12:00','16:00',"21:00","24:00"],
+                    data : ['12','16',"21","24"],
                     axisLabel: {
                         show: true,
                         textStyle: {
@@ -1390,7 +1394,6 @@
             yAxis : [
                 {
                     type : 'value',
-                    interval: 500,
                     axisLabel: {
                         show: true,
                         textStyle: {
@@ -1412,7 +1415,7 @@
                     name:'昨天',
                     type:'bar',
                     data:[222, 1806,104,26],
-                    barWidth:6,
+                    barWidth:10,
                     itemStyle:{
                         normal:{
                             color:"#1fb56d"
@@ -1423,7 +1426,7 @@
                     name:'前天',
                     type:'bar',
                     data:[222, 1700,481,13],
-                    barWidth:6,
+                    barWidth:10,
                     itemStyle:{
                         normal:{
                             color:"#009EE7"
@@ -1440,9 +1443,9 @@
             },
             grid: {
                 left: '0%',
-                right: '10%',
-                bottom: '3%',
-                top:"0%",
+                right: '5%',
+                bottom: '10%',
+                top:"15%",
                 containLabel: true
             },
             xAxis: {
@@ -1502,7 +1505,7 @@
                 {
                     name: '访问',
                     type: 'bar',
-                    barWidth:16,
+                    barWidth:10,
                     itemStyle:{
                         normal:{
                             color:"#1fb56d"
@@ -1532,10 +1535,10 @@
                 itemHeight:10
             },
             grid: {
-                left: '1%',
-                right: '1%',
-                bottom: '30%',
-                top:'5%',
+                left: '5%',
+                right: '5%',
+                bottom: '25%',
+                top:'15%',
                 containLabel: true
             },
             xAxis : [
@@ -1573,7 +1576,7 @@
                 {
                     name:'周期1～6',
                     type:'bar',
-                    barWidth:8,
+                    barWidth:10,
                     data:[2.5, 3.5, 4.5],
                     itemStyle:{
                         normal:{
@@ -1584,7 +1587,7 @@
                 {
                     name:'周期7～14',
                     type:'bar',
-                    barWidth:8,
+                    barWidth:10,
                     data:[1, 1.2, 1.3],
                     itemStyle:{
                         normal:{
@@ -1596,7 +1599,7 @@
                 {
                     name:'周期15～30',
                     type:'bar',
-                    barWidth : 8,
+                    barWidth : 10,
                     stack: '搜索引擎',
                     data:[1.8, 2.3, 3],
                     itemStyle:{
@@ -1608,7 +1611,7 @@
                 {
                     name:'周期>30',
                     type:'bar',
-                    barWidth : 8,
+                    barWidth : 10,
                     data:[2, 2.5, 3.5],
                     itemStyle:{
                         normal:{
@@ -1619,7 +1622,7 @@
                 {
                     name:'周期无拜访',
                     type:'bar',
-                    barWidth : 8,
+                    barWidth : 10,
                     data:[3.5, 4.1, 4.6],
                     itemStyle:{
                         normal:{
@@ -1634,10 +1637,10 @@
                 trigger: 'axis'
             },
             grid: {
-                left: '1%',
-                right: '1%',
-                bottom: '30%',
-                top:'12%',
+                left: '0%',
+                right: '0%',
+                bottom: '25%',
+                top:'15%',
                 containLabel: true
             },
             legend: {
@@ -1745,10 +1748,10 @@
                 trigger: 'axis'
             },
             grid: {
-                left: '1%',
-                right: '1%',
-                bottom: '40%',
-                top:'12%',
+                left: '0%',
+                right: '0%',
+                bottom: '30%',
+                top:'20%',
                 containLabel: true
             },
             legend: {
@@ -1813,7 +1816,7 @@
                     name:'终端总数',
                     type:'bar',
                     data:[31000, 35000],
-                    barWidth:7,
+                    barWidth:8,
                     itemStyle:{
                         normal:{
                             color:"#1fb56d"
@@ -1824,7 +1827,7 @@
                     name:'协议店终端总数',
                     type:'bar',
                     data:[18000, 19000],
-                    barWidth:7,
+                    barWidth:8,
                     itemStyle:{
                         normal:{
                             color:"#009EE7"
@@ -1835,7 +1838,7 @@
                     name:'执行到位终端总数',
                     type:'bar',
                     data:[8000, 9000],
-                    barWidth:7,
+                    barWidth:8,
                     itemStyle:{
                         normal:{
                             color:"#7f308c"
@@ -1862,10 +1865,10 @@
                 trigger: 'axis'
             },
             grid: {
-                left: '1%',
+                left: '0%',
                 right: '5%',
-                bottom: '25%',
-                top:'5%',
+                bottom: '20%',
+                top:'15%',
                 containLabel: true
             },
             legend: {
@@ -1939,7 +1942,7 @@
                 {
                     name: '本月铺货终端数',
                     type: 'bar',
-                    barWidth:8,
+                    barWidth:10,
                     itemStyle:{
                         normal:{
                             color:"#1fb56d"
@@ -1949,7 +1952,7 @@
                 },{
                     name: '上月铺货终端数',
                     type: 'bar',
-                    barWidth:8,
+                    barWidth:10,
                     itemStyle:{
                         normal:{
                             color:"#019fe8"
@@ -1978,10 +1981,10 @@
                 itemHeight:10
             },
             grid: {
-                left: '1%',
-                right: '1%',
-                bottom: '20%',
-                top:'10%',
+                left: '0%',
+                right: '0%',
+                bottom: '25%',
+                top:'15%',
                 containLabel: true
             },
             xAxis : [
@@ -2352,8 +2355,8 @@
             grid: {
                 left: '0%',
                 right: '10%',
-                bottom: '20%',
-                top:"0%",
+                bottom: '15%',
+                top:'10%',
                 containLabel: true
             },
             legend: {
@@ -2424,7 +2427,7 @@
                 {
                     name: '当月库存',
                     type: 'bar',
-                    barWidth:8,
+                    barWidth:9,
                     itemStyle:{
                         normal:{
                             color:"#1fb56d"
@@ -2435,7 +2438,7 @@
                 {
                     name: '上月库存',
                     type: 'bar',
-                    barWidth:8,
+                    barWidth:9,
                     itemStyle:{
                         normal:{
                             color:"#019fe8"
